@@ -2,18 +2,18 @@
 
 namespace AssessmentApp.Repository.InMemory
 {
-    public class InMemoryDeptRepository : IDepartment
+    public class InMemoryDeptRepository : IIDepartment
     {
 
         static List<Department> departmentList = new List<Department>();
-        public Department AddDept(Department newDept)
+        public Department AddInMemoryDept(Department newDept)
         {
             newDept.Id = departmentList.Max(x => x.Id) + 1;
             departmentList.Add(newDept);
             return newDept;
         }
 
-        public Department DeleteDept(int deptID)
+        public Department DeleteInMemoryDept(int deptID)
         {
             var oldDept = departmentList.Find(x => x.Id == deptID);
             if (oldDept == null)
@@ -36,20 +36,20 @@ namespace AssessmentApp.Repository.InMemory
 
 
 
-        public List<Department> GetAllDept()
+        public List<Department> GetInAllDept()
         {
             return departmentList;
         }
 
        
-        public Department GetDeptById(int deptID)
+        public Department GetInDeptById(int deptID)
         {
             return departmentList.FirstOrDefault(x => x.Id == deptID);
         }
 
   
 
-        public Department UpdateDept(int deptID, Department newDept)
+        public Department UpdateInMemoryDept(int deptID, Department newDept)
         {
             var oldDept = departmentList.Find(x => x.Id == deptID);
             if (oldDept != null)

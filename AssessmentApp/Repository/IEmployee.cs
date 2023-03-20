@@ -1,5 +1,4 @@
 ﻿using AssessmentApp.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace AssessmentApp.Repository
 {
@@ -18,8 +17,6 @@ namespace AssessmentApp.Repository
         Employee UpdateEmp(int empID, Employee newEmp);
 
         Employee DeleteEmp(int empID);
-
-
 
     }
 }
