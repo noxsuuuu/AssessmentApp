@@ -1,6 +1,7 @@
 using AssessmentApp.Data;
 using AssessmentApp.Repository;
 using AssessmentApp.Repository.MsSQL;
+using AssessmentApp.Repository.InMemory;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,7 @@ builder.Services.AddScoped<EMSDbContext, EMSDbContext>();
 
 builder.Services.AddScoped<IDepartment, DeptDBRepository>();
 builder.Services.AddScoped<IEmployee, EmpDBRepository>();
-
+builder.Services.AddSingleton<IIEmployee, InMemoryEmpRepository>();
 
 
 var app = builder.Build();

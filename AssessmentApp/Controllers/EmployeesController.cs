@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AssessmentApp.Data;
 using AssessmentApp.Models;
 using AssessmentApp.Repository.MsSQL;
+using AssessmentApp.Repository.InMemory;
 using AssessmentApp.Repository;
 
 namespace AssessmentApp.Controllers
@@ -17,10 +18,13 @@ namespace AssessmentApp.Controllers
         IEmployee _context;
         private readonly EMSDbContext _repo;
 
+       
+
         public EmployeesController(IEmployee repo, EMSDbContext rep)
         {
             this._context = repo;
             _repo = rep;
+          
         }
     
 
@@ -28,8 +32,16 @@ namespace AssessmentApp.Controllers
         public IActionResult Index()
         {
             var emp = _context.GetAllEmp();
+            //var inMemory = _repo1.GetAllEmp();
             return View(emp);
         }
+
+
+        //Get: InMemory
+
+        
+
+
 
         // GET: Employees/Details/5
         public IActionResult Details(int id)
@@ -40,6 +52,9 @@ namespace AssessmentApp.Controllers
 
           
         }
+        
+        //Details: InMemory
+       
 
 
         // GET: Employees/Create
@@ -49,8 +64,9 @@ namespace AssessmentApp.Controllers
             return View();
         }
 
+
+
         [HttpPost]
-       
         public IActionResult Create(Employee employee)
         {
             if (ModelState.IsValid)
@@ -63,6 +79,10 @@ namespace AssessmentApp.Controllers
             ViewData["Message"] = "Data is not valid to create the Employee";
             return View();
         }
+
+
+        
+
 
         public async Task<IActionResult> Edit(int? id)
         {
@@ -116,6 +136,10 @@ namespace AssessmentApp.Controllers
             return View(employee);
         }
 
+
+       
+
+
         private bool EmployeeExists(int id)
         {
             return (_repo.Employees?.Any(e => e.Id == id)).GetValueOrDefault();
@@ -127,6 +151,8 @@ namespace AssessmentApp.Controllers
             return RedirectToAction(controllerName: "Employees", actionName: "Index");
             
         }
+
+       
 
     }
 }
