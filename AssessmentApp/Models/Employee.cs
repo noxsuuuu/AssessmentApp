@@ -13,7 +13,7 @@ namespace AssessmentApp.Models
         public int Id { get; set; }
 
         public string? EmpName { get; set; }
-
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime EmpDob { get; set; }
         [Display(Name = "Phone Number")]
         [MaxLength(11)]
