@@ -15,6 +15,7 @@ builder.Services.AddScoped<EMSDbContext, EMSDbContext>();
 builder.Services.AddScoped<IDepartment, DeptDBRepository>();
 builder.Services.AddScoped<IEmployee, EmpDBRepository>();
 builder.Services.AddSingleton<IIEmployee, InMemoryEmpRepository>();
+builder.Services.AddSingleton<IIDepartment, InMemoryDeptRepository>();
 
 
 var app = builder.Build();
